@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:sample_chat_app/samll_talk_page.dart';
+import 'package:sample_chat_app/small_talk_page.dart';
 
 void main() {
   runApp(const ChatApp());
