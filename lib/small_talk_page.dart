@@ -13,8 +13,7 @@ class SmallTalkPage extends StatefulWidget {
   final String handleName;
 
   @override
-  // ignore: library_private_types_in_public_api
-  _SmallTalkPageState createState() => _SmallTalkPageState();
+  State<SmallTalkPage> createState() => _SmallTalkPageState();
 }
 
 class _SmallTalkPageState extends State<SmallTalkPage> {
@@ -167,15 +166,13 @@ class _SmallTalkPageState extends State<SmallTalkPage> {
   }
 
   void _deleteMessage(int index) async {
-    // ignore: no_leading_underscores_for_local_identifiers
-    List<SmallTalk> _smallTalks = await Amplify.DataStore.query(
+    List<SmallTalk> tmpSmallTalks = await Amplify.DataStore.query(
       SmallTalk.classType,
       where: SmallTalk.ID.eq(smallTalks[index].id),
     );
-    // ignore: no_leading_underscores_for_local_identifiers
-    for (SmallTalk _smallTalk in _smallTalks) {
+    for (SmallTalk smallTalk in tmpSmallTalks) {
       try {
-        await Amplify.DataStore.delete(_smallTalk);
+        await Amplify.DataStore.delete(smallTalk);
       } on DataStoreException catch (e) {
         debugPrint('Delete failed: $e');
       }
